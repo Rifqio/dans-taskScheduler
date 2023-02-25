@@ -1,5 +1,5 @@
 const express = require("express");
-const { mainDB, backupDB } = require("./config/database");
+const { mainDB } = require("./config/database");
 const ProductRoute = require('./routes/ProductRoute')
 const app = express();
 app.use(express.json());
@@ -8,8 +8,6 @@ const database = async () => {
   try {
     await mainDB.authenticate();
     console.log("Main database connected");
-    await backupDB.authenticate();
-    console.log("Backup database connected");
   } catch (error) {
     console.log(error);
   }
